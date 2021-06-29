@@ -12,6 +12,6 @@ def create_tournament(request):
             form.save()
             return redirect('index')
         else:
-            form = TournamentForm()
+            form = TournamentForm(request.POST)
 
     return render(request, "tournaments/tournaments.html", {"form": form})
