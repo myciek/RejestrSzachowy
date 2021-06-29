@@ -31,6 +31,7 @@ ALLOWED_HOSTS = ['0.0.0.0', 'localhost']
 
 INSTALLED_APPS = [
     'users',
+    'tournaments',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

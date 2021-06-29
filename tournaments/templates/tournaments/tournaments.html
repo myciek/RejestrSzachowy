@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}Stworz turniej{% endblock %}
+
+{% block content %}
+    {% if user.is_authenticated %}
+        <form method="POST" class="form-group">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-success">Stworz turniej</button>
+        </form>
+    {% else %}
+        <p>Nie masz dostepu do tej strony!</p>
+    {% endif %}
+
+{% endblock %}
