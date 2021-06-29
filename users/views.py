@@ -21,6 +21,6 @@ def register(request):
             login(request, user)
             return redirect('index')
         else:
-            form = RegisterForm()
+            form = RegisterForm(request.POST)
 
     return render(request, "registration/register.html", {"form": form})
