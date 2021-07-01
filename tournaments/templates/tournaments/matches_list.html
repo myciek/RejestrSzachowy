@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+    <h1>{{ tournament.name }}</h1>
+    {% if tournament.matches %}
+        <table>
+            <tr>
+                <th>Biale</th>
+                <th>Czarne</th>
+                <th>Wynik</th>
+            </tr>
+            {% for match in tournament.matches %}
+                <tr>
+                    <td>{{ match.white }}</td>
+                    <td>{{ match.black }}</td>
+                    <td>{{ match.get_result_display }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <p>Nie rozegrano jeszcze zadnych meczow!</p>
+    {% endif %}
+    {% if user.is_arbiter %}
+        <a href="/matches/create" style="float: left">Dodaj mecz</a>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+    {% if tournaments %}
+        <table>
+            <tr>
+                <th>Nazwa</th>
+                <th>Data</th>
+                <th>Sedzia</th>
+                <th>Link</th>
+            </tr>
+            {% for tournament in tournaments %}
+                <tr>
+                    <td>{{ tournament.name }}</td>
+                    <td>{{ tournament.date }}</td>
+                    <td>{{ tournament.arbiter }}</td>
+                    <td><a href="{% url 'tournaments:tournament_details' pk=tournament.id %}">Zobacz</a></td>
+                </tr>
+            {% endfor %}
+        </table>
+        {% if user.is_arbiter %}
+            <a href="/tournaments/create" style="float: left">Dodaj turniej</a>
+        {% endif %}
+    {% else %}
+        <p>Nie rozegrano jeszcze meczow w zadnym turnieju!</p>
+    {% endif %}
+{% endblock %}
