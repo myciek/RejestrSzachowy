@@ -21,4 +21,7 @@
     {% else %}
         <p>Nie rozegrano jeszcze zadnych meczow!</p>
     {% endif %}
+    {% if user.is_arbiter %}
+        <a href="/matches/create" style="float: left">Dodaj mecz</a>
+    {% endif %}
 {% endblock %}

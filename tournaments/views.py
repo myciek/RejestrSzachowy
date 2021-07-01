@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.shortcuts import render, redirect
 
@@ -29,11 +30,12 @@ def tournament_details(request, pk):
     return render(request, "tournaments/matches_list.html", context)
 
 
+@login_required
 def tournament_list(request):
-    tournaments = []
     if request.user.is_arbiter:
         tournaments = Tournament.objects.filter(arbiter=request.user)
     else:
+        tournaments = []
         for match in request.user.matches_white.all():
             tournaments.append(match.tournament)
         for match in request.user.matches_black.all():

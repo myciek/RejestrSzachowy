@@ -1,6 +1,5 @@
 {% extends "base.html" %}
 
-
 {% block content %}
     {% if tournaments %}
         <table>
@@ -19,6 +18,9 @@
                 </tr>
             {% endfor %}
         </table>
+        {% if user.is_arbiter %}
+            <a href="/tournaments/create" style="float: left">Dodaj turniej</a>
+        {% endif %}
     {% else %}
         <p>Nie rozegrano jeszcze meczow w zadnym turnieju!</p>
     {% endif %}
